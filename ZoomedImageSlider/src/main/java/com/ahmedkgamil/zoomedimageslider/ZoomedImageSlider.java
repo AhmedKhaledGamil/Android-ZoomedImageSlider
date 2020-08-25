@@ -18,39 +18,23 @@ import java.util.List;
 
 public class ZoomedImageSlider extends LinearLayout {
 
-    private static ViewPager2 viewPager2 = null;
-
-    public ZoomedImageSlider(Context context, List<String> images) {
-        super(context);
-        // We initialize the images in this constructor
-        List<SliderItem> sliderItems = new ArrayList<>();
-        for (String image : images) {
-            sliderItems.add(new SliderItem(image));
-        }
-        SliderAdapter adapter = (SliderAdapter) viewPager2.getAdapter();
-        if (adapter != null) {
-            adapter.setImages(sliderItems);
-        }
-    }
-
     public ZoomedImageSlider(@NonNull Context context) {
-        super(context); // Not Used
+        super(context);
     }
 
     public ZoomedImageSlider(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        // We use the init function in the second constructor because it is called first
     }
 
     public ZoomedImageSlider(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr); // Not Used
+        super(context, attrs, defStyleAttr);
     }
 
     public void loadImages(List<String> images) {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (inflater != null) {
             inflater.inflate(R.layout.zoomed_image_slider, this, true);
-            viewPager2 = findViewById(R.id.viewPagerImageSlider);
+            ViewPager2 viewPager2 = findViewById(R.id.viewPagerImageSlider);
 
             List<SliderItem> sliderItems = new ArrayList<>();
 
@@ -58,7 +42,7 @@ public class ZoomedImageSlider extends LinearLayout {
                 sliderItems.add(new SliderItem(image));
             }
 
-            viewPager2.setAdapter(new SliderAdapter(getContext(), sliderItems, viewPager2));
+            viewPager2.setAdapter(new SliderAdapter(getContext(), sliderItems));
 
             viewPager2.setClipToPadding(false);
             viewPager2.setClipChildren(false);

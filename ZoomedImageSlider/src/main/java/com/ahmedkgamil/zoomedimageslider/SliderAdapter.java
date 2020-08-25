@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.widget.ViewPager2;
 
 import com.bumptech.glide.Glide;
 import com.makeramen.roundedimageview.RoundedImageView;
@@ -18,17 +17,10 @@ class SliderAdapter extends RecyclerView.Adapter<SliderAdapter.SliderViewHolder>
 
     private Context context;
     private List<SliderItem> sliderItems;
-    private ViewPager2 viewPager2;
 
-    public SliderAdapter(Context context, List<SliderItem> sliderItems, ViewPager2 viewPager2) {
+    public SliderAdapter(Context context, List<SliderItem> sliderItems) {
         this.context = context;
         this.sliderItems = sliderItems;
-        this.viewPager2 = viewPager2;
-    }
-
-    public void setImages(List<SliderItem> sliderItems) {
-        this.sliderItems = sliderItems;
-        notifyDataSetChanged();
     }
 
     @NonNull
