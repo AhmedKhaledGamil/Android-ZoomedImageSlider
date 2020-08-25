@@ -1,0 +1,3 @@
+include ':ZoomedImageSlider'
+include ':app'
+rootProject.name = "ZoomedImageSliderExample"
