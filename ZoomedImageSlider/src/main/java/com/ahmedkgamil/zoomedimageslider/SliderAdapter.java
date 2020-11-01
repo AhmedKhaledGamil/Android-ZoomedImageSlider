@@ -40,7 +40,12 @@ class SliderAdapter extends RecyclerView.Adapter<SliderAdapter.SliderViewHolder>
         if (sliderItems.isEmpty()) {
             return;
         }
-        holder.downloadImage(sliderItems.get(position));
+        SliderItem item = sliderItems.get(position);
+        if (item.getImageUrl() != null) {
+            holder.downloadImage(sliderItems.get(position));
+        } else {
+            holder.loadImage(sliderItems.get(position));
+        }
     }
 
     @Override
@@ -58,6 +63,10 @@ class SliderAdapter extends RecyclerView.Adapter<SliderAdapter.SliderViewHolder>
 
         void downloadImage(SliderItem sliderItem) {
             Glide.with(context).load(sliderItem.getImageUrl()).into(image);
+        }
+
+        void loadImage(SliderItem sliderItem) {
+            Glide.with(context).load(sliderItem.getImageResId()).into(image);
         }
     }
 }
